@@ -1,0 +1,75 @@
+#include<bits/stdc++.h>
+using namespace std;
+//sks0109
+#define ll long long
+#define ff first
+#define ss second
+#define pb push_back
+#define vi vector<int>
+#define rep(i,a,b) for(int i=a;i<b;i++)
+#define vll vector<ll>
+#define endl '\n'
+
+
+signed main(){
+
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+#endif
+
+
+
+    int tc = 0, tt = 1;
+    cin >> tt;
+    while (tc++ < tt)
+    {
+
+        ll n, m;
+        cin >> n >> m;
+
+        ll ans = 0, temp = m;
+        for(ll i = 2; i * i <= m; i++){
+            if(!(temp%i)){
+                ans++;
+                while(!(temp%i)){
+                    temp /= i;
+                }
+            }
+        }
+
+        if(temp > 1){
+            ans++;
+        }
+
+        vll arr;
+        for(ll i = 1; i * i <= n; i++){
+            if(!(n%i)){
+                arr.pb(i);
+                if(i != (n/i)){
+                    arr.pb(n/i);
+                }
+            }
+        }
+
+        ll val = 0;
+
+        for(auto x: arr){
+            if(x <= ans){
+                val = x;
+            }
+        }
+
+        cout << val << endl;
+
+
+
+
+
+
+
+
+    }
+
+    return 0;
+}
